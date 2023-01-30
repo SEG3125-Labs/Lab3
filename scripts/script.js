@@ -5,7 +5,8 @@ const products = [
 		glutenFree: true,
 		organic: true,
 		price: 14.99,
-		imgSrc: "img/steak.png"
+		imgSrc: "img/steak.png",
+		category: "Meat"
 	},
 	{
 		name: "Bread",
@@ -13,7 +14,8 @@ const products = [
 		glutenFree: false,
 		organic: false,
 		price: 5.99,
-		imgSrc: "img/bread.png"
+		imgSrc: "img/bread.png",
+		category: "Other"
 	},
 	{
 		name: "Coffee Beans",
@@ -21,7 +23,8 @@ const products = [
 		glutenFree: true,
 		organic: false,
 		price: 10.99,
-		imgSrc: "img/coffee.png"
+		imgSrc: "img/coffee.png",
+		category: "Other"
 	},
 	{
 		name: "Cheese",
@@ -29,7 +32,8 @@ const products = [
 		glutenFree: true,
 		organic: true,
 		price: 5.50,
-		imgSrc: "img/cheese.png"
+		imgSrc: "img/cheese.png",
+		category: "Dairy"
 	},
 	{
 		name: "Strawberries",
@@ -37,7 +41,8 @@ const products = [
 		glutenFree: true,
 		organic: false,
 		price: 2.49,
-		imgSrc: "img/strawberries.png"
+		imgSrc: "img/strawberries.png",
+		category: "Fruit"
 	},
 	{
 		name: "Apples",
@@ -45,7 +50,8 @@ const products = [
 		glutenFree: true,
 		organic: true,
 		price: 1.99,
-		imgSrc: "img/apples.png"
+		imgSrc: "img/apples.png",
+		category: "Fuit"
 	},
 	{
 		name: "Pasta",
@@ -53,7 +59,8 @@ const products = [
 		glutenFree: false,
 		organic: false,
 		price: 9.50,
-		imgSrc: "img/pasta.png"
+		imgSrc: "img/pasta.png",
+		category: "Other"
 	},
 	{
 		name: "Tomatoes",
@@ -61,7 +68,8 @@ const products = [
 		glutenFree: true,
 		organic: false,
 		price: 3.90,
-		imgSrc: "img/tomatoes.png"
+		imgSrc: "img/tomatoes.png",
+		category: "Vegetable"
 	},
 	{
 		name: "Salad",
@@ -69,7 +77,8 @@ const products = [
 		glutenFree: true,
 		organic: true,
 		price: 6.49,
-		imgSrc: "img/salad.png"
+		imgSrc: "img/salad.png",
+		category: "Vegetable"
 	},
 	{
 		name: "Chicken",
@@ -77,7 +86,8 @@ const products = [
 		glutenFree: true,
 		organic: false,
 		price: 9.99,
-		imgSrc: "img/chicken.png"
+		imgSrc: "img/chicken.png",
+		category: "Meat"
 	},
 	{
 		name: "Beans",
@@ -85,10 +95,12 @@ const products = [
 		glutenFree: true,
 		organic: true,
 		price: 5.99,
-		imgSrc: "img/beans.png"
+		imgSrc: "img/beans.png",
+		category: "Other"
 	}
 ];
 let selected = []
+let categories = ['Meat', 'Vegetable', 'Dairy', 'Fruit', 'Other']
 
 function openTab(evt, tabName) {
 	var tabcontent = document.getElementsByClassName("tabcontent");
@@ -138,49 +150,57 @@ function updateProductList() {
 
 	var typeOfFood = document.getElementById("type-of-food");
 
-	for (var i = 0; i < products.length; i++) {
-		if (document.getElementById("Vegitarian").checked && !products[i].vegetarian) {
-			console.log(1)
-			continue;
-		} else if (document.getElementById("GlutenFree").checked && !products[i].glutenFree) {
-			console.log(2)
-			continue;
-		} else if (typeOfFood.options[typeOfFood.selectedIndex].text == "Organic" && !products[i].organic) {
-			console.log(3)
-			continue;
-		} else if (typeOfFood.options[typeOfFood.selectedIndex].text == "Non-Organic" && products[i].organic) {
-			console.log(4)
-			continue;
+	for (var j=0; j < categories.length; j++) {
+		var categoryLabel = document.createElement("h2");
+		categoryLabel.innerHTML = categories[j]
+		productList.appendChild(categoryLabel);
+
+		for (var i = 0; i < products.length; i++) {
+			if (document.getElementById("Vegitarian").checked && !products[i].vegetarian) {
+				console.log(1)
+				continue;
+			} else if (document.getElementById("GlutenFree").checked && !products[i].glutenFree) {
+				console.log(2)
+				continue;
+			} else if (typeOfFood.options[typeOfFood.selectedIndex].text == "Organic" && !products[i].organic) {
+				console.log(3)
+				continue;
+			} else if (typeOfFood.options[typeOfFood.selectedIndex].text == "Non-Organic" && products[i].organic) {
+				console.log(4)
+				continue;
+			}
+
+			if (categories[j] != products[i].category) { continue; }
+
+			var checkbox = document.createElement("input");
+			checkbox.type = "checkbox";
+			checkbox.name = "product";
+			checkbox.value = products[i].name;
+
+			var Image = document.createElement("img");
+			Image.src = products[i].imgSrc;
+			Image.height = 70;
+			Image.width = 90;
+
+			if (selected.includes(products[i].name)) {
+				checkbox.checked = true;
+			}
+
+			productList.appendChild(Image);
+
+			productList.appendChild(checkbox);
+
+			var label = document.createElement('label')
+			label.htmlFor = products.name;
+			label.appendChild(document.createTextNode(products[i].name + " $" + products[i].price));
+			productList.appendChild(label);
+
+			productList.appendChild(document.createElement("br"));
+			productList.appendChild(document.createElement("br"));
+			productList.appendChild(document.createElement("br"));
+
+
 		}
-		var checkbox = document.createElement("input");
-		checkbox.type = "checkbox";
-		checkbox.name = "product";
-		checkbox.value = products[i].name;
-
-		var Image = document.createElement("img");
-    Image.src = products[i].imgSrc;
-    Image.height = 70;
-    Image.width = 90;
-
-		if (selected.includes(products[i].name)) {
-			checkbox.checked = true;
-		}
-
-		productList.appendChild(Image);
-		productList.appendChild(document.createElement("br"));
-
-		productList.appendChild(checkbox);
-
-		var label = document.createElement('label')
-		label.htmlFor = products.name;
-		label.appendChild(document.createTextNode(products[i].name + " $" + products[i].price));
-		productList.appendChild(label);
-
-		productList.appendChild(document.createElement("br"));
-		productList.appendChild(document.createElement("br"));
-    productList.appendChild(document.createElement("br"));
-
-
 	}
 }
 
@@ -223,6 +243,6 @@ function addToCart() {
 
 	c.appendChild(d);
 
-	c.append("The total price is: " + total);
+	c.append("The total price is: $" + total);
 
 }
