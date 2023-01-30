@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="allText">
+    <h1 class="centered">uOttawa Grocery Store</h1>
+    <!-- Tab links -->
+    <nav class="tab centered">
+        <button class="tablinks" onclick="openTab(event, 'Customer')" id="defaultOpen">Customer</button>
+        <button class="tablinks" onclick="openTab(event, 'Products')">Products</button>
+        <button class="tablinks" onclick="openTab(event, 'Cart')">Cart</button>
+    </nav>
+
+    <!-- Tab content -->
+    <div id="Customer" class="tabcontent">
+        <h3>Customer</h3>
+        <div>
+            <p>Restrictions (Select the dietary restrictions that apply to the user)</p>
+            <input type="checkbox" name="Restrictions" value="Vegitarian" id="Vegitarian">Vegitarian<br>
+            <input type="checkbox" name="Restrictions" value="GlutenFree" id="GlutenFree">Gluten Free<br>
+            <div class="select-container">
+                Organic or non-organic:
+                <select id="type-of-food">
+                    <option value="no-preference" selected="selected">No Preference</option>
+                    <option value="organic">Organic</option>
+                    <option value="non-organic">Non-Organic</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="Products" class="tabcontent">
+        <h3>Products</h3>
+        <p>Please select your products from the list below. The following list was created based on the customers
+            restrictions. (sorted highest to lowest price)</p>
+        <div id="productList"></div>
+        <br>
+        <button id="addToCart" type="button" onclick="addToCart()">Add Items To Cart</button>
+    </div>
+
+    <div id="Cart" class="tabcontent">
+        <h3>Cart</h3>
+        <div id="CartContent">
+            Please select your product...
+        </div>
+    </div>
+
+    <div>
+        <button type="button" name="biggerText" id="biggerText" onclick="biggerText()">A+</button>
+    </div>
+    <div>
+        <button type="button" name="smallerText" id="smallerText" onclick="smallerText()">A-</button>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <a>Website Designed by Adrian Iannantuono, Chunhui Ma and Maruf Saki</a>
+        </div>
+    </footer>
+
+
+
+    <script src="scripts/script.js"></script>
+    <script>
+        document.getElementById("defaultOpen").click();
+    </script>
+
+</body>
+
+</html>
