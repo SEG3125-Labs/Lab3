@@ -3,6 +3,7 @@
 
 <head>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/slider.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="allText">
@@ -29,11 +30,35 @@
                     <option value="non-organic">Non-Organic</option>
                 </select>
             </div>
+
+            <div class="range_container">
+                <div class="sliders_control">
+                    <input id="fromSlider" type="range" value="10" min="0" max="100" />
+                    <input id="toSlider" type="range" value="40" min="0" max="100" />
+                </div>
+                <div class="form_control">
+                    <div class="form_control_container">
+                        <div class="form_control_container__time">Min price$</div>
+                        <input class="form_control_container__time__input" type="number" id="fromInput" value="10"
+                            min="0" max="100" />
+                    </div>
+                    <div class="form_control_container">
+                        <div class="form_control_container__time">Max price$</div>
+                        <input class="form_control_container__time__input" type="number" id="toInput" value="40" min="0"
+                            max="100" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="Products" class="tabcontent">
+
+
         <h3>Products</h3>
+
+
+
         <p>Please select your products from the list below. The following list was created based on the customers
             restrictions. (sorted highest to lowest price)</p>
         <div id="productList"></div>
@@ -64,6 +89,7 @@
 
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/slider.js"></script>
     <script>
         document.getElementById("defaultOpen").click();
     </script>

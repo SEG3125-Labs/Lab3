@@ -132,15 +132,15 @@ function openTab(evt, tabName) {
 }
 
 function biggerText() {
-  var all = document.getElementById("allText");
+	var all = document.getElementById("allText");
 
-  all.style.fontSize = "30px";
+	all.style.fontSize = "30px";
 }
 
 function smallerText() {
-  var all = document.getElementById("allText");
+	var all = document.getElementById("allText");
 
-  all.style.fontSize = "16px";
+	all.style.fontSize = "16px";
 }
 
 function updateProductList() {
@@ -150,7 +150,7 @@ function updateProductList() {
 
 	var typeOfFood = document.getElementById("type-of-food");
 
-	for (var j=0; j < categories.length; j++) {
+	for (var j = 0; j < categories.length; j++) {
 		var categoryLabel = document.createElement("h2");
 		categoryLabel.innerHTML = categories[j]
 		productList.appendChild(categoryLabel);
@@ -169,6 +169,13 @@ function updateProductList() {
 				console.log(4)
 				continue;
 			}
+
+			let min = Number(document.getElementById("fromInput").value)
+
+			let max = Number(document.getElementById("toInput").value)
+
+
+			if (!(products[i].price <= max && products[i].price >= min)) { continue }
 
 			if (categories[j] != products[i].category) { continue; }
 
@@ -230,7 +237,7 @@ function addToCart() {
 		item.className = "item"
 
 		item.innerHTML = e
-		
+
 		d.appendChild(item)
 		d.appendChild(document.createElement("br"))
 		total += product.price
@@ -246,3 +253,4 @@ function addToCart() {
 	c.append("The total price is: $" + total);
 
 }
+
