@@ -226,24 +226,25 @@ function addToCart() {
 
 	var d = document.createElement("div");
 
-	d.innerHTML = "You selected : <br><br>";
+	d.innerHTML = "You selected : <br><br> <ul>";
 
 	selected.forEach((e) => {
 		const product = products.find((e2) => {
 			return e2.name === e;
 
 		});
-		item = document.createElement("div");
+		item = document.createElement("li");
 		item.className = "item"
 
-		item.innerHTML = e
+		item.innerHTML = e + " " + product.price
 
 		d.appendChild(item)
-		d.appendChild(document.createElement("br"))
+		//d.appendChild(document.createElement("br"))
 		total += product.price
 
 	})
 
+	d.innerHTML += "</ul><br>"
 
 	let c = document.getElementById('CartContent');
 	c.innerHTML = "";
@@ -251,6 +252,8 @@ function addToCart() {
 	c.appendChild(d);
 
 	c.append("The total price is: $" + total);
+
+	alert("Products added!!!")
 
 }
 
