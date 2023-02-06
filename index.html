@@ -4,6 +4,7 @@
 <head>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <link href="styles/slider.css" rel="stylesheet" type="text/css">
+    <link href="styles/slideshow.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="allText">
@@ -19,6 +20,34 @@
 
     <!-- Tab content -->
     <div id="Customer" class="tabcontent">
+
+        <div class="slideshow">
+            <span id="slide-1"></span>
+            <span id="slide-2"></span>
+            <span id="slide-3"></span>
+
+            <div class="sImages">
+                <img src="img/store.png" class="slide" width="500" height="300">
+                <img src="img/store_inside.png" class="slide" width="500" height="300">
+                <img src="img/staff.png" class="slide" width="500" height="300">
+
+            </div>
+
+            <div class="sbuttons">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+            </div>
+
+        </div>
+
+        <p>Welcome to uOttawa Grocery Store. We have been serving our students and non-students customers since 1990.
+            We offer you the freshest and finest food products for a very affordable price. We are partnered with 
+            <a href="https://montreal.lufa.com/en/">Lufa Farms</a> and <a href="https://berettafarms.com/">Bretta Farms</a>
+            to bring you your sustainable choices. Combined with our friendly staff, we guarentee
+
+        </p>
+
         <h3>Customer</h3>
         <div>
             <p>Restrictions (Select the dietary restrictions that apply to the user)</p>
@@ -82,8 +111,8 @@
         <button type="button" name="smallerText" id="smallerText" onclick="smallerText()">A-</button>
     </div>
 
-    <footer>
-        <div class="footer">
+    <footer style="text-align: center;">
+        <div>
             <a>Website Designed by Adrian Iannantuono, Chunhui Ma and Maruf Saki</a>
         </div>
     </footer>
